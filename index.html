@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>D&D Round Tracker</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app-container">
+      <header>
+        <h1>D&D Round Tracker</h1>
+        <div class="header-controls">
+          <div class="round-counter">
+            <span>Round: <span id="currentRound">1</span></span>
+            <div class="round-buttons">
+              <button id="prevRound" class="round-btn">−</button>
+              <button id="nextRound" class="round-btn">+</button>
+            </div>
+          </div>
+          <div class="initiative-controls">
+            <span>Initiative: <span id="currentInitiative">20</span></span>
+            <div class="initiative-buttons">
+              <button id="prevInitiative" class="initiative-btn">−</button>
+              <button id="nextInitiative" class="initiative-btn">+</button>
+              <button id="resetInitiative" class="initiative-btn reset">
+                Reset
+              </button>
+            </div>
+          </div>
+          <div class="action-controls">
+            <div class="dropdown-container">
+              <button id="addCharacter" class="action-btn">
+                Add Character
+              </button>
+              <div class="dropdown-menu" id="addDropdown">
+                <div class="dropdown-item" data-type="player">Player</div>
+                <div class="dropdown-item" data-type="npc">NPC</div>
+                <div class="dropdown-item" data-type="monster">Monster</div>
+              </div>
+            </div>
+            <div class="dropdown-container">
+              <button id="removeCharacter" class="action-btn">
+                Remove Character
+              </button>
+              <div class="dropdown-menu" id="removeDropdown">
+                <div class="dropdown-item" data-type="player">Player</div>
+                <div class="dropdown-item" data-type="npc">NPC</div>
+                <div class="dropdown-item" data-type="monster">Monster</div>
+              </div>
+            </div>
+            <button id="saveData" class="action-btn save">Save</button>
+          </div>
+        </div>
+      </header>
+
+      <!-- Players Carousel Section -->
+      <section class="players-section">
+        <h2>Players</h2>
+        <div class="carousel-container">
+          <button class="carousel-btn prev-btn" id="prevBtn">&lt;</button>
+          <div class="carousel-wrapper">
+            <div class="carousel" id="playersCarousel">
+              <!-- Player cards will be populated here -->
+            </div>
+          </div>
+          <button class="carousel-btn next-btn" id="nextBtn">&gt;</button>
+        </div>
+      </section>
+
+      <!-- NPCs and Monsters Grid Section -->
+      <section class="bottom-section">
+        <div class="grid-container">
+          <!-- NPCs Grid -->
+          <div class="npcs-section">
+            <h2>NPCs</h2>
+            <div class="grid" id="npcsGrid">
+              <!-- NPC cards will be populated here -->
+            </div>
+          </div>
+
+          <!-- Monsters Grid -->
+          <div class="monsters-section">
+            <h2>Monsters</h2>
+            <div class="grid" id="monstersGrid">
+              <!-- Monster cards will be populated here -->
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- Modal for interactions -->
+    <div class="modal" id="characterModal">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <div id="modalBody">
+          <!-- Modal content will be populated here -->
+        </div>
+      </div>
+    </div>
+
+    <script type="module" src="script.js"></script>
+  </body>
+</html>
