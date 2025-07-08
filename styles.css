@@ -137,9 +137,9 @@ header h1 {
 /* Card Styles */
 .card {
   background-color: var(--bg-tertiary);
-  border-radius: 12px;
-  padding: 20px;
-  min-width: 300px;
+  border-radius: 10px;
+  padding: 16px;
+  min-width: 260px;
   border: 2px solid;
   cursor: pointer;
   transition: all 0.3s ease;
@@ -147,8 +147,8 @@ header h1 {
 }
 
 .card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
 }
 
 .card.player {
@@ -171,20 +171,21 @@ header h1 {
 .card.dead::after {
   content: "💀 DEAD";
   position: absolute;
-  top: 10px;
-  right: 10px;
+  top: 8px;
+  right: 8px;
   background-color: var(--dead-color);
   color: white;
-  padding: 5px 10px;
-  border-radius: 6px;
-  font-size: 0.8rem;
+  padding: 4px 8px;
+  border-radius: 5px;
+  font-size: 0.75rem;
   font-weight: bold;
 }
 
 /* Initiative-based Visual Effects */
 .card.current-turn {
-  box-shadow: 0 0 20px rgba(255, 215, 0, 0.8), 0 0 40px rgba(255, 215, 0, 0.4);
-  border-color: #ffd700 !important;
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.8),
+    0 0 25px rgba(255, 225, 255, 0.4);
+  border-color: #ffffff !important;
 }
 
 .card.upcoming-turn {
@@ -203,21 +204,22 @@ header h1 {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 15px;
+  margin-bottom: 12px;
 }
 
 .character-name {
-  font-size: 1.3rem;
+  font-size: 1.2rem;
   font-weight: bold;
 }
 
 .initiative-badge {
   background-color: var(--bg-primary);
   color: var(--text-primary);
-  padding: 5px 12px;
-  border-radius: 20px;
+  padding: 4px 10px;
+  border-radius: 16px;
   font-weight: bold;
   border: 1px solid;
+  font-size: 0.85rem;
 }
 
 .player .initiative-badge {
@@ -241,21 +243,21 @@ header h1 {
 }
 
 .hp-bar-container {
-  margin: 15px 0;
+  margin: 12px 0;
 }
 
 .hp-text {
   display: flex;
   justify-content: space-between;
-  margin-bottom: 5px;
-  font-size: 0.9rem;
+  margin-bottom: 4px;
+  font-size: 0.85rem;
 }
 
 .hp-bar {
   width: 100%;
-  height: 8px;
+  height: 6px;
   background-color: var(--bg-primary);
-  border-radius: 4px;
+  border-radius: 3px;
   overflow: hidden;
 }
 
@@ -305,8 +307,8 @@ header h1 {
 
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: 20px;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 16px;
 }
 
 /* Modal Styles */
@@ -495,7 +497,7 @@ header h1 {
 
 /* Add a pseudo-element to bridge the gap between button and dropdown */
 .dropdown-container::before {
-  content: '';
+  content: "";
   position: absolute;
   top: 100%;
   left: 0;
@@ -541,6 +543,445 @@ header h1 {
   background-color: rgba(239, 68, 68, 0.2);
 }
 
+.hidden {
+  display: none;
+}
+
+.show {
+  display: block;
+}
+
+/* Stats Button Styles */
+.stats-btn {
+  background-color: var(--bg-tertiary);
+  color: var(--text-primary);
+  border: 2px solid var(--border-color);
+  padding: 12px 20px;
+  margin: 8px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  min-width: 160px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.stats-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.stats-btn.enter-stats {
+  background-color: var(--player-accent);
+  border-color: var(--player-accent);
+  color: white;
+}
+
+.stats-btn.enter-stats:hover {
+  background-color: #16a34a;
+  border-color: #16a34a;
+  box-shadow: 0 4px 12px rgba(34, 197, 94, 0.4);
+}
+
+.stats-btn.start-attack {
+  background-color: var(--npc-accent);
+  border-color: var(--npc-accent);
+  color: white;
+}
+
+.stats-btn.start-attack:hover {
+  background-color: #ca8a04;
+  border-color: #ca8a04;
+  box-shadow: 0 4px 12px rgba(234, 179, 8, 0.4);
+}
+
+.stats-btn.save-stats {
+  background-color: var(--player-accent);
+  border-color: var(--player-accent);
+  color: white;
+}
+
+.stats-btn.save-stats:hover {
+  background-color: #16a34a;
+  border-color: #16a34a;
+  box-shadow: 0 4px 12px rgba(34, 197, 94, 0.4);
+}
+
+.stats-btn.cancel-stats {
+  background-color: var(--monster-accent);
+  border-color: var(--monster-accent);
+  color: white;
+}
+
+.stats-btn.cancel-stats:hover {
+  background-color: #dc2626;
+  border-color: #dc2626;
+  box-shadow: 0 4px 12px rgba(239, 68, 68, 0.4);
+}
+
+/* Stats Modal Styles */
+.stats-modal {
+  display: none;
+  position: fixed;
+  z-index: 1001;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.85);
+}
+
+.stats-modal-content {
+  background-color: var(--bg-secondary);
+  margin: 3% auto;
+  padding: 24px;
+  border-radius: 14px;
+  width: 85%;
+  max-width: 96vw;
+  max-height: 80vh;
+  border: 2px solid var(--player-accent);
+  position: relative;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+/* Custom scrollbar for stats modal */
+.stats-modal-content::-webkit-scrollbar {
+  width: 8px;
+}
+
+.stats-modal-content::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+}
+
+.stats-modal-content::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 4px;
+}
+
+.stats-modal-content::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.5);
+}
+
+.stats-modal-content::-webkit-scrollbar-thumb:active {
+  background: rgba(255, 255, 255, 0.6);
+}
+
+/* Ensure form sections are properly sized */
+.stats-form-section {
+  min-height: 160px;
+  max-height: 320px;
+  overflow-y: auto;
+}
+
+.stats-form-section::-webkit-scrollbar {
+  width: 6px;
+}
+
+.stats-form-section::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 3px;
+}
+
+.stats-form-section::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 3px;
+}
+
+.stats-form-section::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+/* Ensure actions section can expand properly */
+.stats-form-section.full-width {
+  min-height: 120px;
+  max-height: 240px;
+}
+
+.stats-close {
+  color: var(--text-secondary);
+  float: right;
+  font-size: 32px;
+  font-weight: bold;
+  cursor: pointer;
+  position: absolute;
+  top: 15px;
+  right: 25px;
+  transition: color 0.3s ease;
+}
+
+.stats-close:hover {
+  color: var(--monster-accent);
+}
+
+.stats-modal h2 {
+  color: var(--player-accent);
+  margin-bottom: 8px;
+  font-size: 1.6rem;
+  text-align: center;
+}
+
+.stats-modal h3 {
+  color: var(--text-primary);
+  margin-bottom: 16px;
+  font-size: 1.2rem;
+  text-align: center;
+  font-weight: normal;
+}
+
+/* Stats Form Styles - Glassneomorphism */
+.stats-form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin: 16px 0;
+}
+
+.stats-form-section {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 16px;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.1);
+}
+
+.stats-form-section h4 {
+  color: var(--text-primary);
+  margin: 0 0 12px 0;
+  font-size: 1rem;
+  font-weight: 600;
+  text-align: center;
+}
+
+.form-group {
+  margin-bottom: 12px;
+}
+
+.form-group label {
+  display: block;
+  color: var(--text-secondary);
+  margin-bottom: 4px;
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+
+.form-input {
+  width: 100%;
+  padding: 8px 10px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 6px;
+  color: var(--text-primary);
+  font-size: 0.85rem;
+  backdrop-filter: blur(5px);
+  transition: all 0.3s ease;
+  box-sizing: border-box;
+}
+
+.form-input:focus {
+  outline: none;
+  border-color: var(--player-accent);
+  background: rgba(255, 255, 255, 0.12);
+  box-shadow: 0 0 0 2px rgba(52, 211, 153, 0.2);
+}
+
+.form-select {
+  width: 100%;
+  padding: 8px 10px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 6px;
+  color: var(--text-primary);
+  font-size: 0.85rem;
+  backdrop-filter: blur(5px);
+  transition: all 0.3s ease;
+  cursor: pointer;
+  box-sizing: border-box;
+}
+
+.form-select:focus {
+  outline: none;
+  border-color: var(--player-accent);
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.form-select option {
+  background-color: var(--bg-secondary);
+  color: var(--text-primary);
+  padding: 8px 10px;
+  border: none;
+}
+
+.form-select option:hover {
+  background-color: var(--bg-tertiary);
+}
+
+.form-select option:checked {
+  background-color: var(--player-accent);
+  color: white;
+}
+
+/* Color coding for different character types */
+.form-select option[data-type="Player"] {
+  color: var(--player-accent);
+}
+
+.form-select option[data-type="NPC"] {
+  color: var(--npc-accent);
+}
+
+.form-select option[data-type="Monster"] {
+  color: var(--monster-accent);
+}
+
+.attack-inputs {
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  padding: 12px;
+  margin-bottom: 12px;
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.attack-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.attack-header h5 {
+  margin: 0;
+  color: var(--text-primary);
+  font-size: 0.9rem;
+}
+
+.remove-attack-btn {
+  background: rgba(239, 68, 68, 0.2);
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  color: #ef4444;
+  padding: 4px 8px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 0.75rem;
+  transition: all 0.3s ease;
+}
+
+.remove-attack-btn:hover {
+  background: rgba(239, 68, 68, 0.3);
+}
+
+.attack-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr 70px;
+  gap: 8px;
+  align-items: end;
+}
+
+.add-attack-btn {
+  width: 100%;
+  padding: 8px;
+  background: rgba(52, 211, 153, 0.2);
+  border: 1px solid rgba(52, 211, 153, 0.3);
+  color: var(--player-accent);
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  margin-top: 8px;
+}
+
+.add-attack-btn:hover {
+  background: rgba(52, 211, 153, 0.3);
+}
+
+.healing-toggle {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.healing-toggle label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  color: var(--text-secondary);
+  font-size: 0.85rem;
+}
+
+.healing-toggle input[type="radio"] {
+  accent-color: var(--player-accent);
+}
+
+.full-width {
+  grid-column: 1 / -1;
+}
+
+.actions-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  max-height: 180px;
+  overflow-y: auto;
+}
+
+.action-item {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.action-item input {
+  flex: 1;
+}
+
+.remove-action-btn {
+  background: rgba(239, 68, 68, 0.2);
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  color: #ef4444;
+  padding: 6px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 0.75rem;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+}
+
+.remove-action-btn:hover {
+  background: rgba(239, 68, 68, 0.3);
+}
+
+.add-action-btn {
+  width: 100%;
+  padding: 6px;
+  background: rgba(52, 211, 153, 0.2);
+  border: 1px solid rgba(52, 211, 153, 0.3);
+  color: var(--player-accent);
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 0.75rem;
+  transition: all 0.3s ease;
+  margin-top: 8px;
+}
+
+.add-action-btn:hover {
+  background: rgba(52, 211, 153, 0.3);
+}
+
+.stats-modal-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 24px;
+  flex-wrap: wrap;
+}
+
 /* Responsive Design */
 @media (max-width: 768px) {
   .grid-container {
@@ -559,7 +1000,7 @@ header h1 {
   }
 
   .card {
-    min-width: 250px;
+    min-width: 220px;
   }
 
   header {
@@ -585,5 +1026,40 @@ header h1 {
   .modal-content {
     width: 95%;
     margin: 10% auto;
+  }
+
+  .stats-modal-content {
+    width: 95%;
+    max-width: 96vw;
+    max-height: 80vh;
+    margin: 5% auto;
+    padding: 20px;
+  }
+
+  .stats-form {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .attack-row {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+
+  .attack-row .form-input,
+  .attack-row .form-select {
+    margin-bottom: 8px;
+  }
+
+  .stats-btn {
+    min-width: 140px;
+    font-size: 0.9rem;
+    padding: 10px 16px;
+    width: 100%;
+  }
+
+  .stats-modal-buttons {
+    flex-direction: column;
+    align-items: center;
   }
 }
