@@ -68,18 +68,19 @@ There are three main data structures: Players, NPCs, and Monsters. Below is a li
 ### CSS Architecture
 
 #### Color Scheme (Dark Mode)
+
 ```css
 :root {
   /* Primary backgrounds */
   --bg-primary: #1a1a1a;
   --bg-secondary: #2d2d2d;
   --bg-tertiary: #3a3a3a;
-  
+
   /* Character type accent colors */
-  --player-accent: #22c55e;    /* Green */
-  --npc-accent: #eab308;       /* Yellow */
-  --monster-accent: #ef4444;   /* Red */
-  
+  --player-accent: #22c55e; /* Green */
+  --npc-accent: #eab308; /* Yellow */
+  --monster-accent: #ef4444; /* Red */
+
   /* Status indicators */
   --dead-color: #7f1d1d;
   --wounded-color: #f59e0b;
@@ -88,12 +89,14 @@ There are three main data structures: Players, NPCs, and Monsters. Below is a li
 ```
 
 #### Visual Effects System
+
 - **Initiative-based effects**: Cards change appearance based on turn order
   - `.current-turn`: Golden glow for characters whose initiative matches current
   - `.upcoming-turn`: Blur and darken for characters who haven't acted yet
   - Normal appearance for characters who have already acted
 
 #### Responsive Design
+
 - Mobile-first approach with breakpoint at 768px
 - Stacked layout on mobile devices
 - Flexible grid systems for character cards
@@ -103,19 +106,23 @@ There are three main data structures: Players, NPCs, and Monsters. Below is a li
 #### Core Functions
 
 1. **Initialization Functions**
+
    - `initializeApp()`: Sorts players, populates cards, applies visual effects
    - `setupEventListeners()`: Configures all user interaction handlers
 
 2. **Card Management**
+
    - `createPlayerCard()`, `createNPCCard()`, `createMonsterCard()`: Generate character cards
    - `populatePlayersCarousel()`, `populateNPCsGrid()`, `populateMonstersGrid()`: Populate displays
 
 3. **Initiative & Round Management**
+
    - `updateInitiativeEffects()`: Apply visual effects based on current initiative
    - `nextInitiative()`, `previousInitiative()`, `resetInitiative()`: Initiative navigation
    - `nextRound()`, `previousRound()`: Round management
 
 4. **UI State Management**
+
    - `updateCarousel()`: Handle player carousel navigation
    - `updateInitiativeDisplay()`, `updateRoundDisplay()`: Sync UI with state
    - `showCharacterModal()`, `closeModal()`: Character detail interactions
@@ -129,11 +136,13 @@ There are three main data structures: Players, NPCs, and Monsters. Below is a li
 ### Visual Layout
 
 #### Header Controls
+
 ```
 [D&D Round Tracker]     [Round: 1 [-][+]] [Initiative: 20 [-][+][Reset]] [Add▼] [Remove▼] [Save]
 ```
 
 #### Main Content Area
+
 ```
 Players (Carousel - sorted by initiative descending)
 [◀] [Player Card] [Player Card] [Player Card] [▶]
@@ -146,6 +155,7 @@ NPCs (Grid)                    Monsters (Grid)
 ### Character Cards
 
 Each card displays:
+
 - **Header**: Character name + Initiative badge
 - **Info**: Player name/Race/Type based on character type
 - **HP Bar**: Visual health indicator with percentage
@@ -155,6 +165,7 @@ Each card displays:
 ### Initiative System
 
 The app tracks initiative with visual feedback:
+
 1. **Current Turn**: Golden glow around cards with matching initiative
 2. **Completed Turns**: Normal appearance for lower initiative values
 3. **Upcoming Turns**: Blurred and darkened for higher initiative values
@@ -162,21 +173,25 @@ The app tracks initiative with visual feedback:
 ### Interactive Features
 
 #### Carousel Navigation
+
 - Left/Right arrows to navigate through players
 - Automatic disable when at boundaries
 - Smooth CSS transitions
 
 #### Dropdown Menus
+
 - **Add Character**: Hover-activated dropdown (Player/NPC/Monster)
 - **Remove Character**: Similar dropdown for removal options
 - **Smooth animations** with invisible bridge for better UX
 
 #### Modal System
+
 - Click any character card to view detailed stats
 - Shows complete round-by-round combat history
 - Damage dealt/taken, healing, actions, and killing blows
 
 #### Data Export
+
 - **Save button**: Downloads JSON file with complete game state
 - Includes timestamp, round data, and all character information
 - Filename format: `dnd-round-tracker-YYYY-MM-DD.json`
@@ -195,16 +210,19 @@ The app tracks initiative with visual feedback:
 ### Technical Implementation Notes
 
 #### Event Handling
+
 - Uses modern ES6+ features (arrow functions, template literals, destructuring)
 - Modular function design with clear separation of concerns
 - Comprehensive error checking for DOM elements
 
 #### Performance Considerations
+
 - CSS transitions for smooth visual effects
 - Efficient DOM manipulation with minimal redraws
 - Responsive design patterns for mobile optimization
 
 #### Accessibility Features
+
 - Semantic HTML structure
 - Clear visual hierarchy
 - Keyboard navigation support through standard HTML controls
@@ -213,7 +231,23 @@ The app tracks initiative with visual feedback:
 ### Future Enhancement Framework
 
 The codebase includes placeholder functionality for:
+
 - **Character Management**: Add/remove character dialogs (currently logs to console)
 - **Google Sheets Integration**: Framework for cloud data persistence
 - **Advanced Combat Tracking**: Expandable round stats system
 - **Import/Export**: JSON file loading for session restoration
+
+# Styling
+
+Modern theme using glassneomorphism. Use grid to dynamically align form.
+
+# Content
+
+This form contains player/npc/monster update data. It allows the stats to be dynamically changed over the duration of the game night. This is a core function of this app. Use best practices.
+
+## Form
+
+- dropdown box (string). Contains the different D&Ds abilities available to the player such as sneak, disengage, or attack. Use the last selection box labeled "Manual Entry", when clicking on it it allows the label to be edited so that data is send to "roundStats"->"attacks"->"action"
+- Use the player's number of attack to generate inputs (numbers) to each attack's hit damage. Create a dropdown of all npcs, npcs, and monsters; this selection will be the "roundStats"->"attacks"->"damageDealt" obj's "name" attribute. Also associate a button that allows adds a new attack. If an input is empty, ignore the input completely unless there is only one attack -- empty input = 0 if blank. The number input will represent the "roundStats"->"attacks"->"damageDealt" obj's "name" attribute.
+- An input (number) for healer to self or from others. Alongside offer a toggle to select either self or others. If others is selected, another input for string will appear and record the name of the healer. "roundStats"->"attacks"->"healingDealt" and "healingTaken" obj's "name" attribute is the current selected and the amount is the number input amount.
+- When updating damage dealt, match the name and the amount, deduction the damage amount from the target's current amount.

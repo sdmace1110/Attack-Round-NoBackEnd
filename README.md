@@ -1,63 +1,68 @@
-# D&D Round Tracker
+# 🎲 D&D Round Tracker
 
-A comprehensive Single Page Application (SPA) for Dungeon Masters to track combat rounds, initiative order, and character statistics during Dungeons & Dragons sessions. Built with vanilla HTML, CSS, and JavaScript with no backend dependencies.
+<div align="center">
 
-## Features
+**A comprehensive Single Page Application for Dungeon Masters**
 
-### 🎯 Initiative & Round Management
+_Track initiative, manage combat rounds, and record detailed character statistics_
 
-- **Initiative Tracking**: Visual countdown from 20 to 1 with automatic turn highlighting
-- **Round Counter**: Track combat rounds with increment/decrement controls
-- **Visual Turn Indicators**: Golden glow for current turn, blur effect for upcoming turns
-- **Quick Reset**: Reset initiative to 20 with one click
+[![JavaScript](https://img.shields.io/badge/JavaScript-ES6+-yellow.svg)](https://www.javascript.com/)
+[![CSS](https://img.shields.io/badge/CSS-Glassneomorphism-blue.svg)](https://developer.mozilla.org/en-US/docs/Web/CSS)
+[![License](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
 
-### 👥 Character Management
+</div>
 
-- **Player Carousel**: Horizontally scrollable cards sorted by initiative (descending)
-- **NPC Grid**: Yellow-accented cards for friendly NPCs
-- **Monster Grid**: Red-accented cards for enemies and monsters
-- **Add/Remove Framework**: Dropdown menus for future character management
+---
 
-### 📊 Character Information Display
+## ✨ Features
 
-- **Health Tracking**: Visual HP bars with percentage and color-coded status
-- **Combat Statistics**: Attack counts and killing blows per round
-- **Initiative Display**: Clear initiative badges on each character card
-- **Status Indicators**: Dead characters marked with skull overlay
+### 🎯 **Combat Management**
 
-### 💾 Data Management
+- **Initiative Tracking**: Automatic turn order based on character initiative values
+- **Round Management**: Navigate between rounds with automatic initiative reset
+- **Dead Character Handling**: Dead characters automatically set to initiative 0 and excluded from turn order
+- **Visual Turn Indicators**: Golden glow for current turn, blur effect for upcoming characters
 
-- **JSON Export**: Save complete game state with timestamp
-- **Sample Data**: Pre-loaded with 3 players, 3 NPCs, and 3 monsters
-- **Round Statistics**: Detailed combat tracking per character per round
+### 👥 **Character Management**
 
-### 🎨 User Interface
+- **Three Character Types**: Players, NPCs, and Monsters with unique styling
+- **Health Tracking**: Dynamic HP bars with color-coded health status
+- **Status Indicators**: Visual badges for dead characters and viewed status
+- **Detailed Character Modals**: Click any character for comprehensive stats
 
-- **Dark Mode**: Professional dark theme optimized for low-light gaming
-- **Responsive Design**: Mobile-friendly layout with touch navigation
-- **Color-Coded Types**: Green (players), Yellow (NPCs), Red (monsters)
-- **Smooth Animations**: CSS transitions for all interactions
+### 📊 **Statistics Tracking**
 
-## Getting Started
+- **Round-by-Round Data**: Detailed combat statistics for each character
+- **Attack Tracking**: Number of attacks, damage dealt/taken, targets
+- **Healing Management**: Self-healing vs healing others with source tracking
+- **Magic System**: Spell tracking with damage, notes, and affected targets
+- **Action Logging**: Record all actions taken during combat
+- **Killing Blow Tracking**: Automatically track when attacks result in character deaths
 
-### Prerequisites
+### 🎨 **Modern Interface**
 
-- A modern web browser (Chrome, Firefox, Safari, Edge)
-- No server setup required - runs entirely in the browser
+- **Dark Theme**: Professional dark mode with high contrast
+- **Glassneomorphism**: Modern frosted glass aesthetic with subtle shadows
+- **Responsive Design**: Mobile-optimized layout with touch-friendly controls
+- **Smooth Animations**: CSS transitions and hover effects throughout
+- **Color-Coded Elements**: Green (Players), Yellow (NPCs), Red (Monsters)
+
+---
+
+## 🚀 Quick Start
 
 ### Installation
 
-1. Download or clone the project files
-2. Ensure all files are in the same directory:
-   ```
-   /no_backend/
-   ├── index.html
-   ├── styles.css
-   ├── script.js
-   ├── data.js
-   └── README.md
-   ```
-3. Open `index.html` in your web browser
+```bash
+# Clone the repository
+git clone https://github.com/yourusername/dnd-round-tracker.git
+
+# Navigate to the project directory
+cd dnd-round-tracker/no_backend
+
+# Open in your preferred browser
+open index.html
+```
 
 ### Sample Data
 
@@ -140,11 +145,15 @@ The Save button creates a timestamped JSON file containing:
 
 ```
 /no_backend/
-├── index.html          # Main application structure and layout
-├── styles.css          # Complete styling with dark theme and responsive design
-├── script.js           # All application logic, event handling, and UI updates
-├── data.js             # Sample character data and data structure definitions
-└── README.md           # This documentation file
+├── 📄 index.html          # Main application structure
+├── 🎨 styles.css          # Complete styling with dark theme & glassneomorphism
+├── ⚙️ script.js           # Main application logic and modal systems
+├── 🎠 carousel.js         # Player carousel functionality and navigation
+├── 🃏 cards.js            # Character card creation and display logic
+├── 🎯 round.js            # Round and initiative management system
+├── 📊 [data.js](http://_vscodecontentref_/0)             # Sample character data and exports
+├── 📖 README.md           # This documentation file
+└── 📋 prompts.md          # Comprehensive project documentation
 ```
 
 ## Technical Details
@@ -160,26 +169,37 @@ The Save button creates a timestamped JSON file containing:
 Characters are stored in three arrays (players, npcs, monsters) with the following structure:
 
 ```javascript
+// Character Object Structure
 {
-  characterName: "string",
-  maxHps: number,
-  currentHps: number,
-  initiative: number,
-  isDead: boolean,
-  roundStats: [
+  playerName: "Alex",                    // Player name (players only)
+  characterName: "Thorin Ironbeard",     // Character name (players only)
+  npcName: "Captain Aldric",             // NPC name (NPCs only)
+  npcRace: "Human",                      // NPC race (NPCs only)
+  npcType: "Orc Berserker",              // Monster type (monsters only)
+  maxHps: 45,                            // Maximum hit points
+  currentHps: 38,                        // Current hit points
+  initiative: 16,                        // Initiative value (0 if dead)
+  isDead: false,                         // Death status
+  roundStats: [                          // Combat statistics array
     {
-      roundId: number,
-      attacks: [
+      roundId: 1,                        // Round number
+      attacks: [                         // Attack data array
         {
-          noOfAttacks: number,
-          damageDealt: [{name: "string", amount: number}],
-          damageTaken: [{name: "string", amount: number}],
-          healingDealt: [{name: "string", amount: number}],
-          healingTaken: [{name: "string", amount: number}],
-          actions: [{action: "string"}]
+          noOfAttacks: 2,                // Number of attacks made
+          damageDealt: [                 // Damage dealt to targets
+            { name: "Battleaxe", amount: 12 }
+          ],
+          damageTaken: [                 // Damage received from sources
+            { name: "Orc Scimitar", amount: 7 }
+          ],
+          healingDealt: [],              // Healing provided to others
+          healingTaken: [],              // Healing received
+          actions: [                     // Actions taken
+            { action: "Action Surge" }
+          ]
         }
       ],
-      killingBlows: ["string"]
+      killingBlows: ["Goblin Scout"]     // Characters killed this round
     }
   ]
 }
@@ -261,3 +281,31 @@ Feel free to fork this project and submit pull requests for:
 ---
 
 **Happy Gaming!** 🎲
+
+<style>
+:root {
+  /* Primary Colors */
+  --bg-primary: #0f0f0f;           /* Main background */
+  --bg-secondary: #1a1a1a;         /* Card backgrounds */
+  --bg-tertiary: #2a2a2a;          /* Button backgrounds */
+
+  /* Character Type Colors */
+  --player-accent: #22c55e;        /* Green for players */
+  --npc-accent: #eab308;           /* Yellow for NPCs */
+  --monster-accent: #ef4444;       /* Red for monsters */
+
+  /* Text Colors */
+  --text-primary: #ffffff;         /* Primary text */
+  --text-secondary: #a1a1aa;       /* Secondary text */
+  --border-color: #374151;         /* Border color */
+}
+</style>
+
+/_ Mobile First Design _/
+@media (max-width: 768px) {
+/_ Tablet and mobile styles _/
+}
+
+@media (max-width: 480px) {
+/_ Mobile-specific styles _/
+}

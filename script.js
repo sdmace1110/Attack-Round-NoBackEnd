@@ -1,260 +1,10 @@
-// Players data
-const players = [
-  {
-    playerName: "Alex",
-    characterName: "Thorin Ironbeard",
-    maxHps: 45,
-    currentHps: 38,
-    initiative: 16,
-    isDead: false,
-    roundStats: [
-      {
-        roundId: 1,
-        attacks: [
-          {
-            noOfAttacks: 2,
-            damageDealt: [
-              { name: "Battleaxe", amount: 12 },
-              { name: "Bonus Attack", amount: 8 },
-            ],
-            damageTaken: [{ name: "Orc Scimitar", amount: 7 }],
-            healingDealt: [],
-            healingTaken: [],
-            actions: [{ action: "Action Surge" }, { action: "Second Wind" }],
-          },
-        ],
-        killingBlows: ["Goblin Scout"],
-      },
-    ],
-  },
-  {
-    playerName: "Sarah",
-    characterName: "Luna Starweaver",
-    maxHps: 32,
-    currentHps: 32,
-    initiative: 14,
-    isDead: false,
-    roundStats: [
-      {
-        roundId: 1,
-        attacks: [
-          {
-            noOfAttacks: 1,
-            damageDealt: [{ name: "Fireball", amount: 28 }],
-            damageTaken: [],
-            healingDealt: [{ name: "Cure Wounds", amount: 9 }],
-            healingTaken: [],
-            actions: [
-              { action: "Cast Fireball" },
-              { action: "Healing Word on Thorin" },
-            ],
-          },
-        ],
-        killingBlows: ["Orc Warrior", "Orc Shaman"],
-      },
-    ],
-  },
-  {
-    playerName: "Mike",
-    characterName: "Shadow",
-    maxHps: 28,
-    currentHps: 21,
-    initiative: 18,
-    isDead: false,
-    roundStats: [
-      {
-        roundId: 1,
-        attacks: [
-          {
-            noOfAttacks: 2,
-            damageDealt: [
-              { name: "Sneak Attack", amount: 15 },
-              { name: "Dagger Offhand", amount: 4 },
-            ],
-            damageTaken: [
-              { name: "Goblin Arrow", amount: 5 },
-              { name: "Trap Damage", amount: 2 },
-            ],
-            healingDealt: [],
-            healingTaken: [{ name: "Healing Potion", amount: 7 }],
-            actions: [{ action: "Hide" }, { action: "Cunning Action" }],
-          },
-        ],
-        killingBlows: [],
-      },
-    ],
-  },
-];
-
-// NPCs data
-const npcs = [
-  {
-    npcName: "Captain Aldric",
-    npcRace: "Human",
-    maxHps: 58,
-    currentHps: 58,
-    initiative: 12,
-    isDead: false,
-    roundStats: [
-      {
-        roundId: 1,
-        attacks: [
-          {
-            noOfAttacks: 1,
-            damageDealt: [{ name: "Longsword", amount: 10 }],
-            damageTaken: [],
-            healingDealt: [],
-            healingTaken: [],
-            actions: [{ action: "Rally Troops" }, { action: "Shield Wall" }],
-          },
-        ],
-        killingBlows: [],
-      },
-    ],
-  },
-  {
-    npcName: "Elara Moonwhisper",
-    npcRace: "Elf",
-    maxHps: 27,
-    currentHps: 27,
-    initiative: 15,
-    isDead: false,
-    roundStats: [
-      {
-        roundId: 1,
-        attacks: [
-          {
-            noOfAttacks: 1,
-            damageDealt: [],
-            damageTaken: [],
-            healingDealt: [{ name: "Mass Cure Wounds", amount: 15 }],
-            healingTaken: [],
-            actions: [
-              { action: "Cast Mass Cure Wounds" },
-              { action: "Bless Party" },
-            ],
-          },
-        ],
-        killingBlows: [],
-      },
-    ],
-  },
-  {
-    npcName: "Grimjaw the Merchant",
-    npcRace: "Halfling",
-    maxHps: 18,
-    currentHps: 18,
-    initiative: 8,
-    isDead: false,
-    roundStats: [
-      {
-        roundId: 1,
-        attacks: [
-          {
-            noOfAttacks: 0,
-            damageDealt: [],
-            damageTaken: [],
-            healingDealt: [],
-            healingTaken: [],
-            actions: [
-              { action: "Hide behind cover" },
-              { action: "Call for help" },
-            ],
-          },
-        ],
-        killingBlows: [],
-      },
-    ],
-  },
-];
-
-// Monsters data
-const monsters = [
-  {
-    npcType: "Orc Berserker",
-    maxHps: 67,
-    currentHps: 23,
-    initiative: 13,
-    isDead: false,
-    roundStats: [
-      {
-        roundId: 1,
-        attacks: [
-          {
-            noOfAttacks: 2,
-            damageDealt: [
-              { name: "Greataxe", amount: 13 },
-              { name: "Rage Bite", amount: 6 },
-            ],
-            damageTaken: [
-              { name: "Fireball", amount: 28 },
-              { name: "Battleaxe", amount: 12 },
-              { name: "Sneak Attack", amount: 15 },
-            ],
-            healingDealt: [],
-            healingTaken: [],
-            actions: [{ action: "Rage" }, { action: "Reckless Attack" }],
-          },
-        ],
-        killingBlows: [],
-      },
-    ],
-  },
-  {
-    npcType: "Ancient Red Dragon",
-    maxHps: 546,
-    currentHps: 546,
-    initiative: 10,
-    isDead: false,
-    roundStats: [
-      {
-        roundId: 1,
-        attacks: [
-          {
-            noOfAttacks: 1,
-            damageDealt: [{ name: "Fire Breath", amount: 91 }],
-            damageTaken: [],
-            healingDealt: [],
-            healingTaken: [],
-            actions: [
-              { action: "Fire Breath (Recharge 5-6)" },
-              { action: "Frightful Presence" },
-            ],
-          },
-        ],
-        killingBlows: [],
-      },
-    ],
-  },
-  {
-    npcType: "Goblin Archer",
-    maxHps: 7,
-    currentHps: 0,
-    initiative: 0, // Dead characters have initiative 0
-    isDead: true,
-    roundStats: [
-      {
-        roundId: 1,
-        attacks: [
-          {
-            noOfAttacks: 1,
-            damageDealt: [{ name: "Shortbow", amount: 5 }],
-            damageTaken: [{ name: "Sneak Attack", amount: 15 }],
-            healingDealt: [],
-            healingTaken: [],
-            actions: [{ action: "Aimed Shot" }],
-          },
-        ],
-        killingBlows: [],
-      },
-    ],
-  },
-];
+// Imports
+import { players, npcs, monsters } from "./data.js";
 
 // Global variables
 let currentCarouselIndex = 0;
 let sortedPlayers = [];
-let currentInitiative = 20; // Current initiative count for the round
+let currentInitiative = 30; // Current initiative count for the round
 let currentRound = 1; // Current round number
 
 /**
@@ -958,8 +708,10 @@ function nextInitiative() {
     // Move to next lower initiative value
     currentInitiative = initiativeValues[currentIndex + 1];
   } else {
-    // Already at the lowest initiative, stay there
-    return;
+    // At the lowest initiative - advance to next round and reset initiative
+    currentRound++;
+    currentInitiative = initiativeValues.length > 0 ? initiativeValues[0] : 20;
+    updateRoundDisplay();
   }
 
   updateInitiativeEffects();
@@ -1109,7 +861,7 @@ function printCharacterRoundStats(character, type) {
     return;
   }
 
-  character.roundStats.forEach((roundStat, index) => {
+  character.roundStats.forEach((roundStat, _index) => {
     console.log(`\n🎯 ROUND ${roundStat.roundId}:`);
 
     if (roundStat.attacks && roundStat.attacks.length > 0) {
@@ -1778,7 +1530,9 @@ function validateFormData(data) {
   const hasDamage = data.damageTaken.amount > 0;
   const hasHealing = data.healing.amount > 0;
   const hasActions = data.actions.length > 0;
-  const hasMagic = data.magic.length > 0 && data.magic.some((magic) => magic.totalDamage > 0 || magic.spellName);
+  const hasMagic =
+    data.magic.length > 0 &&
+    data.magic.some((magic) => magic.totalDamage > 0 || magic.spellName);
 
   if (!hasAttacks && !hasDamage && !hasHealing && !hasActions && !hasMagic) {
     alert(
@@ -1805,7 +1559,7 @@ function validateFormData(data) {
 /**
  * Update character's round stats with form data
  */
-function updateCharacterRoundStats(character, type, formData) {
+function updateCharacterRoundStats(character, _type, formData) {
   // Find or create round stats for current round
   let roundStats = character.roundStats.find(
     (rs) => rs.roundId === currentRound
@@ -1832,7 +1586,7 @@ function updateCharacterRoundStats(character, type, formData) {
 
   // Add damage dealt
   formData.attacks.forEach((attack) => {
-    if (attack.damage > 0) {
+    if (attack.damage !== 0) {
       attackEntry.damageDealt.push({
         name: attack.attackName || "Attack",
         amount: attack.damage,
@@ -1896,15 +1650,17 @@ function updateCharacterRoundStats(character, type, formData) {
           name: magic.spellName || "Magic Spell",
           amount: magic.totalDamage,
         });
-        
+
         // Note: Magic damage typically doesn't have specific targets in this form
         // but could be extended in the future to support targeted spells
       }
-      
+
       // Add magic actions
       if (magic.spellName) {
         attackEntry.actions.push({
-          action: `Cast ${magic.spellName}${magic.notes ? ` (${magic.notes})` : ''}`,
+          action: `Cast ${magic.spellName}${
+            magic.notes ? ` (${magic.notes})` : ""
+          }`,
         });
       }
     });
@@ -1932,20 +1688,20 @@ function applyDamageToTarget(targetName, damage, attackerCharacter = null) {
       if (originalHp > 0 && char.currentHps === 0) {
         char.isDead = true;
         char.initiative = 0;
-        
+
         // Track killing blow if we have an attacker
         if (attackerCharacter) {
           // Find the current round stats for the attacker
           const currentRoundStats = attackerCharacter.roundStats.find(
             (rs) => rs.roundId === currentRound
           );
-          
+
           if (currentRoundStats) {
             // Initialize killingBlows array if it doesn't exist
             if (!currentRoundStats.killingBlows) {
               currentRoundStats.killingBlows = [];
             }
-            
+
             // Add the target's name to the killing blows
             currentRoundStats.killingBlows.push(targetName);
           }
