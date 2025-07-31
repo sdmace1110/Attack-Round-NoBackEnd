@@ -46,24 +46,33 @@ export function updateCarouselNavigation() {
 }
 
 /**
- * Set up carousel navigation event listeners
+ * Set up carousel-specific event listeners
  */
 export function setupCarouselEventListeners() {
-  // Carousel navigation - Previous button click handler
-  document.getElementById("prevBtn").addEventListener("click", () => {
-    if (currentCarouselIndex > 0) {
-      currentCarouselIndex--;
-      updateCarousel();
-    }
-  });
+  const prevBtn = document.getElementById("prevBtn");
+  const nextBtn = document.getElementById("nextBtn");
 
-  // Carousel navigation - Next button click handler
-  document.getElementById("nextBtn").addEventListener("click", () => {
-    if (currentCarouselIndex < sortedPlayers.length - 1) {
-      currentCarouselIndex++;
-      updateCarousel();
-    }
-  });
+  if (prevBtn) {
+    prevBtn.addEventListener("click", handlePrevClick);
+  }
+
+  if (nextBtn) {
+    nextBtn.addEventListener("click", handleNextClick);
+  }
+}
+
+function handlePrevClick() {
+  if (currentCarouselIndex > 0) {
+    currentCarouselIndex--;
+    updateCarousel();
+  }
+}
+
+function handleNextClick() {
+  if (currentCarouselIndex < sortedPlayers.length - 1) {
+    currentCarouselIndex++;
+    updateCarousel();
+  }
 }
 
 /**
@@ -81,7 +90,7 @@ export function initializeCarousel() {
 }
 
 /**
- * Update carousel after data changes (re-sort and repopulate)
+ * Update carousel after data changes
  */
 export function updateCarouselAfterDataChange() {
   // Re-sort players

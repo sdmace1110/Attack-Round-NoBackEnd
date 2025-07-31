@@ -83,6 +83,87 @@ const players = [
       },
     ],
   },
+  {
+    playerName: "Gio",
+    characterName: "Reverant Tanglespur",
+    maxHps: 45,
+    currentHps: 38,
+    initiative: 16,
+    isDead: false,
+    roundStats: [
+      {
+        roundId: 1,
+        attacks: [
+          {
+            noOfAttacks: 2,
+            damageDealt: [
+              { name: "Battleaxe", amount: 12 },
+              { name: "Bonus Attack", amount: 8 },
+            ],
+            damageTaken: [{ name: "Orc Scimitar", amount: 7 }],
+            healingDealt: [],
+            healingTaken: [],
+            actions: [{ action: "Action Surge" }, { action: "Second Wind" }],
+          },
+        ],
+        killingBlows: ["Goblin Scout"],
+      },
+    ],
+  },
+  {
+    playerName: "Paul",
+    characterName: "Blimey",
+    maxHps: 45,
+    currentHps: 38,
+    initiative: 16,
+    isDead: false,
+    roundStats: [
+      {
+        roundId: 1,
+        attacks: [
+          {
+            noOfAttacks: 2,
+            damageDealt: [
+              { name: "Battleaxe", amount: 12 },
+              { name: "Bonus Attack", amount: 8 },
+            ],
+            damageTaken: [{ name: "Orc Scimitar", amount: 7 }],
+            healingDealt: [],
+            healingTaken: [],
+            actions: [{ action: "Action Surge" }, { action: "Second Wind" }],
+          },
+        ],
+        killingBlows: ["Goblin Scout"],
+      },
+    ],
+  },
+  {
+    playerName: "Jon",
+    characterName: "Quicken the Rogue",
+    maxHps: 45,
+    currentHps: 38,
+    initiative: 16,
+    isDead: false,
+    roundStats: [
+      {
+        roundId: 1,
+        attacks: [
+          {
+            noOfAttacks: 2,
+            damageDealt: [
+              { name: "Battleaxe", amount: 12 },
+              { name: "Bonus Attack", amount: 8 },
+            ],
+            damageTaken: [{ name: "Orc Scimitar", amount: 7 }],
+            healingDealt: [],
+            healingTaken: [],
+            actions: [{ action: "Action Surge" }, { action: "Second Wind" }],
+          },
+        ],
+        killingBlows: ["Goblin Scout"],
+      },
+    ],
+  },
 ];
 
 // NPCs data

@@ -287,17 +287,17 @@ Feel free to fork this project and submit pull requests for:
   /* Primary Colors */
   --bg-primary: #0f0f0f;           /* Main background */
   --bg-secondary: #1a1a1a;         /* Card backgrounds */
-  --bg-tertiary: #2a2a2a;          /* Button backgrounds */
+  --bg-tertiary: #2a2a2a          /* Button backgrounds */
 
   /* Character Type Colors */
-  --player-accent: #22c55e;        /* Green for players */
-  --npc-accent: #eab308;           /* Yellow for NPCs */
-  --monster-accent: #ef4444;       /* Red for monsters */
+  --player-accent: #22c55e        /* Green for players */
+  --npc-accent: #eab308           /* Yellow for NPCs */
+  --monster-accent: #ef4444       /* Red for monsters */
 
   /* Text Colors */
-  --text-primary: #ffffff;         /* Primary text */
-  --text-secondary: #a1a1aa;       /* Secondary text */
-  --border-color: #374151;         /* Border color */
+  --text-primary: #ffffff         /* Primary text */
+  --text-secondary: #a1a1aa       /* Secondary text */
+  --border-color: #374151         /* Border color */
 }
 </style>
 
